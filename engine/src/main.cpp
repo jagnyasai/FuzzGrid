@@ -1,8 +1,18 @@
-#include<iostream>
+#include <iostream>
 
+#include "process/ProcessRunner.h"
 
-int main(){
-    std::cout << "FuzzGrid Engine v0.1" << std::endl;
+int main() {
+    ProcessRunner runner;
+
+    ProcessResult result = runner.run("echo Hello from child process", "");
+
+    std::cout << "Child process output:\n";
+    std::cout << result.stdout_output;
+
+    std::cout << "Exit code: "
+              << result.exit_code
+              << std::endl;
 
     return 0;
 }
